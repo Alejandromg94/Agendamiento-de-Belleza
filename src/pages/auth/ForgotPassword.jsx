@@ -12,7 +12,8 @@ const ForgotPassword = () => {
       // Simulación de API
       setMessage("Si el correo existe, recibirás instrucciones en breve.");
       setError("");
-    } catch (err) {
+    } catch (error) {
+      console.error("Error al procesar solicitud:", error);
       setError("Hubo un error al procesar la solicitud.");
       setMessage("");
     }

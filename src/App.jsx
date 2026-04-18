@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
 import "./index.css";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/login";
@@ -6,11 +12,13 @@ import AuthGuard from "./components/AuthGuard";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import ResetPassword from "./pages/auth/ResetPassword";
 import Register from "./pages/Register";
-import Navbar from "./components/Navbar"; // Tu nuevo Navbar
+import Navbar from "./components/Navbar";
+import NotFound from "./components/notfound/NotFound";
+import Agenda from "./components/Agenda";
+import AdminPanel from "./pages/AdminPanel";
+import ButtonWassap from "./components/ButtonWassap";
 
-// Componente Layout para agrupar el Navbar con rutas protegidas
-const AdminLayout = ({ children }) => {
-  // Obtenemos los datos del usuario del localStorage que guardaste en el Login
+const AdminLayout = () => {
   const userString = localStorage.getItem("user_token");
   const usuario = userString ? JSON.parse(userString) : null;
 
@@ -18,9 +26,7 @@ const AdminLayout = ({ children }) => {
     <AuthGuard>
       <Navbar usuario={usuario} />
       <div className="pt-24">
-        {" "}
-        {/* Espacio para que el Navbar fixed no tape el contenido */}
-        {children}
+        <Outlet />
       </div>
     </AuthGuard>
   );
@@ -30,51 +36,32 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rutas Públicas */}
+        {/* Rutas públicas */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-        {/* Rutas Protegidas con Navbar */}
-        <Route
-          path="/admin"
-          element={
-            <AdminLayout>
-              <LandingPage />
-            </AdminLayout>
-          }
-        />
+        {/* Rutas protegidas */}
+        <Route element={<AdminLayout />}>
+          <Route path="/admin" element={<LandingPage />} />
+          <Route path="/admin-panel" element={<AdminPanel />} />
+          <Route path="/agenda" element={<Agenda />} />
+          <Route
+            path="/servicios"
+            element={<div className="text-white text-center">Servicios</div>}
+          />
+          <Route
+            path="/precios"
+            element={<div className="text-white text-center">Precios</div>}
+          />
+          <Route path="/agendas" element={<Agenda />} />
+        </Route>
 
-        {/* Agregamos las rutas que mencionaste en el Navbar */}
-        <Route
-          path="/servicios"
-          element={
-            <AdminLayout>
-              <div className="text-white text-center">Servicios</div>
-            </AdminLayout>
-          }
-        />
-        <Route
-          path="/precios"
-          element={
-            <AdminLayout>
-              <div className="text-white text-center">Precios</div>
-            </AdminLayout>
-          }
-        />
-        <Route
-          path="/agendas"
-          element={
-            <AdminLayout>
-              <div className="text-white text-center">Agendas</div>
-            </AdminLayout>
-          }
-        />
-
-        {/* Redirección por defecto */}
-        <Route path="*" element={<Navigate to="/" />} />
+        {/* Página no encontrada */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
+      <ButtonWassap />
     </BrowserRouter>
   );
 }

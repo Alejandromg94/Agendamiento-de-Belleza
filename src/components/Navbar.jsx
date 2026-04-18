@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = ({ usuario = { nombre: "Invitado", rol: "Cliente" } }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("user_token");
+    navigate("/");
+  };
   return (
     <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 font-sans">
       <div className="max-w-7xl mx-auto bg-white/70 backdrop-blur-2xl border border-[#A2CFFE]/40 rounded-[2.5rem] px-8 py-3 flex items-center justify-between shadow-[0_15px_40px_rgba(30,58,138,0.12)]">
@@ -31,6 +37,14 @@ const Navbar = ({ usuario = { nombre: "Invitado", rol: "Cliente" } }) => {
           >
             Agendas
           </Link>
+          {usuario.rol === "Administrador" && (
+            <Link
+              to="/admin-panel"
+              className="text-[11px] font-black text-[#1E3A8A] hover:text-[#2563EB] transition-all uppercase tracking-[0.25em] relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-[#2563EB] hover:after:w-full after:transition-all"
+            >
+              Admin
+            </Link>
+          )}
         </div>
 
         {/* PERFIL DE USUARIO */}
@@ -52,6 +66,13 @@ const Navbar = ({ usuario = { nombre: "Invitado", rol: "Cliente" } }) => {
               className="w-full h-full object-cover"
             />
           </div>
+
+          <button
+            onClick={handleLogout}
+            className="text-[10px] font-black text-[#1E3A8A] hover:text-[#2563EB] transition-all uppercase tracking-[0.2em] ml-4"
+          >
+            Cerrar Sesión
+          </button>
         </div>
       </div>
     </nav>

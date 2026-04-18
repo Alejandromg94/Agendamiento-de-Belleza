@@ -1,7 +1,7 @@
 import "./styles/NotFound.css";
 import { Link } from "react-router-dom";
-import compuImg from "../../assets/compu.png";
-import conoImg from "../../assets/cono.png";
+import compuImg from "../../assets/img/compu.png";
+import conoImg from "../../assets/img/cono.png";
 
 export default function NotFound() {
   return (
