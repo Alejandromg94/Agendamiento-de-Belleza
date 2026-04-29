@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
-// 1. Importa tu logo aquí (ajusta la ruta según tu carpeta)
 import logo from "../assets/img/logo.jpg";
 
 const showAlert = ({ title, text, icon, color, navigate, url }) => {
@@ -16,8 +15,8 @@ const showAlert = ({ title, text, icon, color, navigate, url }) => {
     color: "#FFFFFF",
     iconColor: "#C5A059",
     customClass: {
-      popup: 'rounded-[2rem] border border-white/10'
-    }
+      popup: "rounded-[2rem] border border-white/10",
+    },
   }).then(() => {
     if (navigate && url) {
       navigate(url);
@@ -60,8 +59,17 @@ const Login = () => {
 
     if (usuarioEncontrado) {
       localStorage.setItem("user_token", JSON.stringify(usuarioEncontrado));
-      const url =
-        usuarioEncontrado.rol === "Administrador" ? "/admin-panel" : "/admin";
+      
+      // Lógica de redirección por Rol
+      let url = "/";
+      if (usuarioEncontrado.rol === "Administrador") {
+        url = "/admin-panel";
+      } else if (usuarioEncontrado.rol === "Profesional") {
+        url = "/professional-panel";
+      } else if (usuarioEncontrado.rol === "Cliente") {
+        url = "/customer-portal";
+      }
+
       showAlert({
         title: "¡Bienvenida!",
         text: `Hola de nuevo, ${usuarioEncontrado.nombre}`,
@@ -88,13 +96,14 @@ const Login = () => {
       {/* TARJETA LOGIN */}
       <div className="max-w-md w-full bg-[#0A0A0A] backdrop-blur-3xl rounded-[3rem] p-10 border border-white/5 z-10 shadow-2xl">
         {/* 2. CONTENEDOR DEL LOGO */}
-        <div className="flex flex-col items-center mb-10">
-          <div className="w-24 h-24 mb-6 p-1 bg-gold-gradient rounded-[2rem] shadow-2xl flex items-center justify-center">
-            <div className="w-full h-full bg-[#0A0A0A] rounded-[1.8rem] flex items-center justify-center overflow-hidden p-3">
+        <div className="flex flex-col items-center mb-12">
+          <div className="w-32 h-32 mb-8 p-1.5 bg-gold-gradient rounded-[2.5rem] gold-shadow flex items-center justify-center relative group">
+            <div className="absolute inset-0 bg-gold-gradient opacity-20 blur-xl group-hover:opacity-40 transition-opacity"></div>
+            <div className="w-full h-full bg-[#0A0A0A] rounded-[2.3rem] flex items-center justify-center overflow-hidden p-4 relative z-10">
               <img
                 src={logo}
                 alt="Logo Beauty-flow"
-                className="w-full h-full object-contain brightness-125 grayscale"
+                className="w-full h-full object-contain brightness-110"
               />
             </div>
           </div>
@@ -151,7 +160,8 @@ const Login = () => {
                 to="/register"
                 className="w-full block text-center text-gray-400 hover:text-white font-bold py-2 transition-all uppercase text-[10px] tracking-widest"
               >
-                ¿No tienes cuenta? <span className="text-accent ml-2">Regístrate</span>
+                ¿No tienes cuenta?{" "}
+                <span className="text-accent ml-2">Regístrate</span>
               </Link>
             </div>
           </div>

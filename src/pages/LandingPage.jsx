@@ -6,6 +6,13 @@ import manicuraImg from "../assets/img/uñas2.jpeg";
 import mascarillaImg from "../assets/img/mascarilla.jpeg";
 import pestanasImg from "../assets/img/pestañas.jpeg";
 import unasImg from "../assets/img/uñas1.jpeg";
+import cede1 from "../assets/img/cede1.jpeg";
+import cede2 from "../assets/img/cede2.jpeg";
+import cede3 from "../assets/img/cede3.jpeg";
+import cede4 from "../assets/img/cede4.jpeg";
+import cede5 from "../assets/img/cede5.jpeg";
+import cede6 from "../assets/img/cede6.jpeg";
+import cejas1 from "../assets/img/cejas1.jpeg";
 
 const LandingPage = () => {
   const contactoRef = useRef(null);
@@ -45,7 +52,7 @@ const LandingPage = () => {
       id: 4,
       nombre: "Diseño de Cejas",
       precio: "$35.000",
-      img: pestanasImg,
+      img: cejas1,
       tag: "Beauty",
     },
   ];
@@ -74,7 +81,8 @@ const LandingPage = () => {
               <span className="text-gold-gradient italic">CATALOG</span>
             </h1>
             <p className="text-gray-400 text-lg mb-12 max-w-lg leading-relaxed font-medium uppercase tracking-widest text-[10px]">
-              Especialistas en la arquitectura de tu mirada y la elegancia de tus manos. Un refugio de exclusividad en Bello, Antioquia.
+              Especialistas en la arquitectura de tu mirada y la elegancia de
+              tus manos. Un refugio de exclusividad en Bello, Antioquia.
             </p>
             <div className="flex flex-wrap gap-6">
               <Link
@@ -143,17 +151,21 @@ const LandingPage = () => {
                   {prod.tag}
                 </div>
                 <div className="absolute bottom-10 left-10 right-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
-                    <p className="text-white font-display text-2xl font-black uppercase tracking-tighter leading-none mb-2">
-                        {prod.nombre}
-                    </p>
-                    <p className="text-accent font-black text-xs tracking-[0.2em]">{prod.precio}</p>
+                  <p className="text-white font-display text-2xl font-black uppercase tracking-tighter leading-none mb-2">
+                    {prod.nombre}
+                  </p>
+                  <p className="text-accent font-black text-xs tracking-[0.2em]">
+                    {prod.precio}
+                  </p>
                 </div>
               </div>
               <div className="text-center md:text-left px-4 group-hover:opacity-0 transition-opacity">
                 <h4 className="font-black text-2xl uppercase tracking-tighter text-white font-display">
                   {prod.nombre}
                 </h4>
-                <p className="text-accent font-black italic text-base mt-2 tracking-widest">{prod.precio}</p>
+                <p className="text-accent font-black italic text-base mt-2 tracking-widest">
+                  {prod.precio}
+                </p>
               </div>
             </div>
           ))}
@@ -176,34 +188,48 @@ const LandingPage = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[350px]">
-            <div className="md:col-span-5 md:row-span-2 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[300px]">
+            <div className="md:col-span-6 md:row-span-2 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
               <img
-                src={manicuraImg}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 brightness-75 group-hover:brightness-100 group-hover:grayscale-0"
-                alt="Sede 1"
+                src={cede1}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                alt="Sede Principal"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
-            <div className="md:col-span-7 md:row-span-1 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
+            <div className="md:col-span-6 md:row-span-1 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
               <img
-                src={mascarillaImg}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 brightness-75 group-hover:brightness-100 group-hover:grayscale-0"
-                alt="Sede 2"
+                src={cede2}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                alt="Interiores Elite"
               />
             </div>
             <div className="md:col-span-3 md:row-span-1 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
               <img
-                src={pestanasImg}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 brightness-75 group-hover:brightness-100 group-hover:grayscale-0"
-                alt="Sede 3"
+                src={cede3}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                alt="Zona de Confort"
               />
             </div>
-            <div className="md:col-span-4 md:row-span-1 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
+            <div className="md:col-span-3 md:row-span-1 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
               <img
-                src={unasImg}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 brightness-75 group-hover:brightness-100 group-hover:grayscale-0"
-                alt="Sede 4"
+                src={cede4}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                alt="Detalles de Lujo"
+              />
+            </div>
+            <div className="md:col-span-3 md:row-span-1 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
+              <img
+                src={cede5}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                alt="Espacio VIP"
+              />
+            </div>
+            <div className="md:col-span-3 md:row-span-1 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
+              <img
+                src={cede6}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                alt="Estación de Trabajo"
               />
             </div>
           </div>
@@ -224,38 +250,42 @@ const LandingPage = () => {
         <div className="bg-[#0A0A0A] rounded-[5rem] overflow-hidden border border-white/5 shadow-3xl grid lg:grid-cols-2">
           <div className="p-16 md:p-24 flex flex-col justify-center">
             <span className="text-[10px] font-black uppercase tracking-[0.6em] text-accent mb-6 block">
-                Exclusive Location
+              Exclusive Location
             </span>
             <h3 className="text-6xl font-black text-white uppercase tracking-tighter italic mb-8 font-display">
               Visítanos <span className="text-gray-600">Hoy</span>
             </h3>
             <p className="text-2xl font-bold italic mb-12 text-white/80">
-              Bello, Antioquia - <span className="text-accent">Edificio Platinum</span>
+              Bello, Antioquia -{" "}
+              <span className="text-accent">Edificio Platinum</span>
             </p>
             <div className="relative group">
-                <iframe
+              <iframe
                 title="Mapa"
                 src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3965.2145214370985!2d-75.69749999999999!3d6.3662778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMjEnNTguNiJOIDc1wrA0MSc1MS4wIlc!5e0!3m2!1ses!2sco!4v1777465471145!5m2!1ses!2sco"
                 className="w-full h-80 rounded-[3rem] grayscale invert contrast-125 brightness-75 border-none shadow-2xl opacity-70 group-hover:opacity-100 transition-opacity"
                 allowFullScreen=""
-                ></iframe>
-                <div className="absolute inset-0 rounded-[3rem] border border-white/5 pointer-events-none group-hover:border-accent/20 transition-all"></div>
+              ></iframe>
+              <div className="absolute inset-0 rounded-[3rem] border border-white/5 pointer-events-none group-hover:border-accent/20 transition-all"></div>
             </div>
           </div>
           <div className="bg-gold-gradient p-16 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden">
-             <div className="absolute inset-0 bg-black/5"></div>
-             <div className="relative z-10">
-                <p className="text-black font-black text-5xl uppercase tracking-tighter mb-10 italic font-display leading-[0.9]">
-                  ¿Lista para tu <br /> <span className="bg-black text-white px-4 py-1 inline-block mt-2">TRANSFORMACIÓN?</span>
-                </p>
-                <a
-                  href="https://wa.me/573242780446"
-                  target="_blank"
-                  className="bg-black text-white px-16 py-7 rounded-2xl font-black uppercase text-[10px] tracking-[0.4em] hover:scale-110 transition-all inline-block shadow-2xl"
-                >
-                  Chat de Prioridad VIP
-                </a>
-             </div>
+            <div className="absolute inset-0 bg-black/5"></div>
+            <div className="relative z-10">
+              <p className="text-black font-black text-5xl uppercase tracking-tighter mb-10 italic font-display leading-[0.9]">
+                ¿Lista para tu <br />{" "}
+                <span className="bg-black text-white px-4 py-1 inline-block mt-2">
+                  TRANSFORMACIÓN?
+                </span>
+              </p>
+              <a
+                href="https://wa.me/573242780446"
+                target="_blank"
+                className="bg-black text-white px-16 py-7 rounded-2xl font-black uppercase text-[10px] tracking-[0.4em] hover:scale-110 transition-all inline-block shadow-2xl"
+              >
+                Chat de Prioridad VIP
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -285,16 +315,19 @@ const LandingPage = () => {
             </button>
           </header>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 w-full max-w-7xl pb-20">
-            {[
-              manicuraImg,
-              mascarillaImg,
-              pestanasImg,
-              unasImg,
-              manicuraImg,
-              pestanasImg,
-              mascarillaImg,
-              unasImg
-            ].map((img, i) => (
+            {(visorSede
+              ? [cede1, cede2, cede3, cede4, cede5, cede6]
+              : [
+                  manicuraImg,
+                  mascarillaImg,
+                  pestanasImg,
+                  unasImg,
+                  manicuraImg,
+                  pestanasImg,
+                  mascarillaImg,
+                  unasImg,
+                ]
+            ).map((img, i) => (
               <div
                 key={i}
                 className="h-[500px] rounded-[4rem] overflow-hidden shadow-3xl border border-white/5 group"

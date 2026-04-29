@@ -15,17 +15,14 @@ const AdminPanel = () => {
     }
   });
 
-  // Estados para Edición y Formularios
   const [editandoId, setEditandoId] = useState(null);
   const [userFormData, setUserFormData] = useState({
     nombre: "",
     correo: "",
-    rol: "Profesional", // Valor inicial actualizado
+    rol: "Profesional",
     contrasena: "",
     activo: true,
   });
-
-  // Ya no necesitamos useEffect para cargar usuarios
 
   const save = (key, data) => {
     try {
@@ -165,7 +162,9 @@ const AdminPanel = () => {
           className={`mb-16 p-10 rounded-[4rem] shadow-3xl border transition-all relative overflow-hidden ${editandoId !== null ? "bg-gold-gradient/5 border-accent" : "bg-[#0A0A0A] border-white/5"}`}
         >
           <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-8 flex items-center gap-3">
-            <span className={`w-2 h-2 rounded-full ${editandoId !== null ? "bg-yellow-500 animate-pulse" : "bg-green-500"}`}></span>
+            <span
+              className={`w-2 h-2 rounded-full ${editandoId !== null ? "bg-yellow-500 animate-pulse" : "bg-green-500"}`}
+            ></span>
             {editandoId !== null
               ? "Modificando Credenciales"
               : "Alta de Nuevo Personal"}
@@ -321,7 +320,7 @@ const AdminPanel = () => {
                         onClick={() => {
                           setEditandoId(i);
                           setUserFormData(u);
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                          window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
                         className="text-accent hover:text-white font-black text-[9px] uppercase tracking-widest transition-all"
                       >

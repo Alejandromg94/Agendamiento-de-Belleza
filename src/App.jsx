@@ -16,6 +16,8 @@ import Navbar from "./components/Navbar";
 import NotFound from "./components/notfound/NotFound";
 import Agenda from "./components/Agenda";
 import AdminPanel from "./pages/AdminPanel";
+import ProfessionalPanel from "./pages/ProfessionalPanel";
+import CustomerPortal from "./pages/CustomerPortal";
 import ButtonWassap from "./components/ButtonWassap";
 
 const AdminLayout = () => {
@@ -56,6 +58,8 @@ function App() {
             element={<div className="text-white text-center">Precios</div>}
           />
           <Route path="/agendas" element={<Agenda />} />
+          <Route path="/professional-panel" element={<ProfessionalPanel />} />
+          <Route path="/customer-portal" element={<CustomerPortal />} />
         </Route>
 
         {/* Página no encontrada */}

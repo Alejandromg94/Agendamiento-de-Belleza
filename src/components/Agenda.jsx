@@ -18,6 +18,10 @@ const Agenda = () => {
     profesional: "",
   });
 
+  // Cargar lista de profesionales desde usuarios
+  const profesionales = JSON.parse(localStorage.getItem("usuarios")) || [];
+  const soloPros = profesionales.filter((u) => u.rol === "Profesional" && u.activo);
+
   // Ya no necesitamos useEffect para cargar citas
 
   const saveToStorage = (data) => {
@@ -35,9 +39,10 @@ const Agenda = () => {
     if (
       !citaFormData.cliente ||
       !citaFormData.servicio ||
-      !citaFormData.fecha
+      !citaFormData.fecha ||
+      !citaFormData.profesional
     ) {
-      return Swal.fire("Error", "Completa todos los campos", "error");
+      return Swal.fire("Error", "Completa todos los campos (incluyendo el profesional)", "error");
     }
 
     const nuevaLista = [...citas, { ...citaFormData, id: Date.now() }];
@@ -138,6 +143,26 @@ const Agenda = () => {
               }
               className="w-full bg-[#121212] border border-white/5 p-5 rounded-2xl focus:border-accent outline-none text-white font-black text-xs shadow-inner"
             />
+          </div>
+
+          <div className="w-64">
+            <label className="text-[9px] font-black uppercase mb-3 block ml-1 text-accent tracking-widest">
+              Profesional Staff
+            </label>
+            <select
+              value={citaFormData.profesional}
+              onChange={(e) =>
+                setCitaFormData({ ...citaFormData, profesional: e.target.value })
+              }
+              className="w-full bg-[#121212] border border-white/5 p-5 rounded-2xl focus:border-accent outline-none text-white font-black text-xs shadow-inner cursor-pointer"
+            >
+              <option value="">Seleccionar...</option>
+              {soloPros.map((p, idx) => (
+                <option key={idx} value={p.nombre}>
+                  {p.nombre}
+                </option>
+              ))}
+            </select>
           </div>
 
           <button
