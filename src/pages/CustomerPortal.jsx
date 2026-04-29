@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 
 const CustomerPortal = () => {
   const navigate = useNavigate();
-  // Simulamos que el cliente logueado es "Maria Delgado"
-  const clienteNombre = "Maria Delgado";
+
+  // Obtenemos el nombre real del cliente logueado
+  const userToken = JSON.parse(localStorage.getItem("user_token")) || {};
+  const clienteNombre = userToken.nombre || "Cliente";
 
   const [misCitas] = useState(() => {
     try {

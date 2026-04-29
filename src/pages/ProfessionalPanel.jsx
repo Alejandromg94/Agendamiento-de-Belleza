@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Simulamos que el profesional logueado es "Mariana"
-const proNombre = "Mariana";
 
 const ProfessionalPanel = () => {
   const navigate = useNavigate();
+
+  // Obtenemos el nombre real del usuario logueado
+  const userToken = JSON.parse(localStorage.getItem("user_token")) || {};
+  const proNombre = userToken.nombre || "Profesional";
+
   const [misCitas] = useState(() => {
     try {
       const stored = localStorage.getItem("citas");

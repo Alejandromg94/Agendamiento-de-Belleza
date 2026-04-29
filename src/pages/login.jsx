@@ -36,16 +36,31 @@ const Login = () => {
     const datosGuardados = localStorage.getItem(llave);
     const lista = datosGuardados ? JSON.parse(datosGuardados) : [];
     if (lista.length === 0) {
-      const usuarioMaestro = [
+      const usuariosIniciales = [
         {
           correo: "admin@correo.com",
           contrasena: "123456",
-          nombre: "Administrador",
+          nombre: "Administrador SV",
           rol: "Administrador",
+          activo: true,
+        },
+        {
+          correo: "mariana@correo.com",
+          contrasena: "123456",
+          nombre: "Mariana Staff",
+          rol: "Profesional",
+          activo: true,
+        },
+        {
+          correo: "maria@correo.com",
+          contrasena: "123456",
+          nombre: "Maria Delgado",
+          rol: "Cliente",
+          activo: true,
         },
       ];
-      localStorage.setItem(llave, JSON.stringify(usuarioMaestro));
-      return usuarioMaestro;
+      localStorage.setItem(llave, JSON.stringify(usuariosIniciales));
+      return usuariosIniciales;
     }
     return lista;
   };
