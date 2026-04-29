@@ -76,28 +76,29 @@ const Agenda = () => {
   return (
     <div className="w-full max-w-6xl mx-auto p-4 md:p-10 font-sans">
       {/* TÍTULO DE SECCIÓN */}
-      <div className="mb-8">
-        <h2 className="text-3xl font-black text-black uppercase tracking-tighter italic flex items-center gap-3">
-          <span className="text-[#C5A059]">📅</span> Agenda de Servicios
+      <div className="mb-12">
+        <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic flex items-center gap-4 font-display">
+          <span className="text-gold-gradient text-5xl">📅</span> Agenda de <span className="text-gold-gradient">Servicios</span>
         </h2>
-        <p className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold mt-1">
-          Beauty Studio Optimizer
+        <p className="text-[10px] uppercase tracking-[0.5em] text-gray-600 font-black mt-2">
+          SV Beauty Studio Elite Optimizer
         </p>
       </div>
 
       {/* SÚPER FORMULARIO DE AGENDAMIENTO */}
-      <section className="mb-12 bg-white p-8 rounded-[2.5rem] shadow-xl border border-[#F7DC6F]/20">
-        <h3 className="text-[11px] font-black uppercase tracking-widest text-[#C5A059] mb-6">
-          Programar Nueva Cita
+      <section className="mb-16 bg-[#0A0A0A] p-10 rounded-[3.5rem] shadow-3xl border border-white/5 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gold-gradient opacity-5 rounded-full blur-3xl"></div>
+        <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-8 relative z-10">
+          Programar Nueva Experiencia
         </h3>
 
         <form
           onSubmit={handleCitaSubmit}
-          className="flex flex-wrap gap-6 items-end"
+          className="flex flex-wrap gap-8 items-end relative z-10"
         >
-          <div className="flex-1 min-w-[200px]">
-            <label className="text-[10px] font-black uppercase mb-2 block ml-1 text-gray-500">
-              Nombre del Cliente
+          <div className="flex-1 min-w-[240px]">
+            <label className="text-[9px] font-black uppercase mb-3 block ml-1 text-gray-500 tracking-widest">
+              Nombre de la Cliente
             </label>
             <input
               type="text"
@@ -105,14 +106,14 @@ const Agenda = () => {
               onChange={(e) =>
                 setCitaFormData({ ...citaFormData, cliente: e.target.value })
               }
-              className="w-full bg-gray-50 border border-gray-200 p-4 rounded-2xl focus:border-[#C5A059] focus:ring-4 focus:ring-[#C5A059]/5 outline-none transition-all shadow-sm"
+              className="w-full bg-[#121212] border border-white/5 p-5 rounded-2xl focus:border-accent outline-none transition-all text-white font-medium shadow-inner"
               placeholder="Ej. Maria Delgado"
             />
           </div>
 
-          <div className="flex-1 min-w-[200px]">
-            <label className="text-[10px] font-black uppercase mb-2 block ml-1 text-gray-500">
-              Servicio / Tratamiento
+          <div className="flex-1 min-w-[240px]">
+            <label className="text-[9px] font-black uppercase mb-3 block ml-1 text-gray-500 tracking-widest">
+              Servicio VIP
             </label>
             <input
               type="text"
@@ -120,13 +121,13 @@ const Agenda = () => {
               onChange={(e) =>
                 setCitaFormData({ ...citaFormData, servicio: e.target.value })
               }
-              className="w-full bg-gray-50 border border-gray-200 p-4 rounded-2xl focus:border-[#C5A059] focus:ring-4 focus:ring-[#C5A059]/5 outline-none transition-all shadow-sm"
-              placeholder="Ej. Balayage o Manicura"
+              className="w-full bg-[#121212] border border-white/5 p-5 rounded-2xl focus:border-accent outline-none transition-all text-white font-medium shadow-inner"
+              placeholder="Ej. Diseño de Cejas"
             />
           </div>
 
-          <div className="w-64">
-            <label className="text-[10px] font-black uppercase mb-2 block ml-1 text-gray-500">
+          <div className="w-72">
+            <label className="text-[9px] font-black uppercase mb-3 block ml-1 text-gray-500 tracking-widest">
               Fecha y Hora
             </label>
             <input
@@ -135,13 +136,13 @@ const Agenda = () => {
               onChange={(e) =>
                 setCitaFormData({ ...citaFormData, fecha: e.target.value })
               }
-              className="w-full bg-gray-50 border border-gray-200 p-4 rounded-2xl focus:border-[#C5A059] outline-none shadow-sm text-sm font-bold"
+              className="w-full bg-[#121212] border border-white/5 p-5 rounded-2xl focus:border-accent outline-none text-white font-black text-xs shadow-inner"
             />
           </div>
 
           <button
             type="submit"
-            className="bg-black hover:bg-[#C5A059] text-white px-10 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all shadow-lg active:scale-95 border border-transparent"
+            className="bg-gold-gradient text-black px-12 py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all gold-shadow active:scale-95 border border-transparent"
           >
             Agendar Servicio
           </button>
@@ -149,58 +150,58 @@ const Agenda = () => {
       </section>
 
       {/* TABLA DE CITAS PENDIENTES */}
-      <div className="bg-white rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden">
-        <table className="w-full text-left">
-          <thead className="bg-black text-white">
-            <tr>
-              <th className="p-6 text-[10px] font-black uppercase tracking-widest">
+      <div className="bg-[#0A0A0A] rounded-[4rem] shadow-3xl border border-white/5 overflow-hidden">
+        <table className="w-full text-left border-collapse">
+          <thead>
+            <tr className="bg-black/40 border-b border-white/5">
+              <th className="p-8 text-[9px] font-black uppercase tracking-[0.3em] text-gray-500">
                 Servicio y Cliente
               </th>
-              <th className="p-6 text-[10px] font-black uppercase tracking-widest">
-                Fecha Programada
+              <th className="p-8 text-[9px] font-black uppercase tracking-[0.3em] text-gray-500">
+                Programación
               </th>
-              <th className="p-6 text-[10px] font-black uppercase tracking-widest text-center">
-                Acción
+              <th className="p-8 text-[9px] font-black uppercase tracking-[0.3em] text-center text-gray-500">
+                Gestión
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y divide-white/5">
             {citas.length > 0 ? (
               citas.map((cita, index) => (
                 <tr
                   key={index}
-                  className="hover:bg-[#F7DC6F]/5 transition-all group"
+                  className="hover:bg-white/[0.02] transition-all group"
                 >
-                  <td className="p-6">
-                    <div className="font-black text-gray-900 uppercase text-sm group-hover:text-[#C5A059] transition-colors">
+                  <td className="p-8">
+                    <div className="font-black text-white uppercase text-base group-hover:text-gold-gradient transition-colors font-display tracking-tight">
                       {cita.servicio}
                     </div>
-                    <div className="text-xs text-gray-400 font-bold italic">
+                    <div className="text-[10px] text-gray-500 font-bold italic tracking-widest mt-1">
                       👤 {cita.cliente}
                     </div>
                   </td>
-                  <td className="p-6">
-                    <div className="font-mono text-xs text-gray-600 bg-gray-50 px-3 py-1 rounded-lg inline-block border border-gray-100">
-                      {cita.fecha.replace("T", " ")}
+                  <td className="p-8">
+                    <div className="font-mono text-[10px] text-accent bg-accent/5 px-4 py-2 rounded-xl inline-block border border-accent/10 tracking-tighter">
+                      {cita.fecha.replace("T", " @ ")}
                     </div>
                   </td>
-                  <td className="p-6 text-center">
+                  <td className="p-8 text-center">
                     <button
                       onClick={() => eliminarCita(index)}
-                      className="bg-red-50 text-red-500 px-5 py-2 rounded-xl text-[9px] font-black uppercase hover:bg-red-500 hover:text-white transition-all shadow-sm"
+                      className="bg-red-950/20 text-red-500 px-6 py-2 rounded-xl text-[9px] font-black uppercase hover:bg-red-500 hover:text-white transition-all border border-red-900/20"
                     >
-                      Cancelar Cita
+                      Cancelar
                     </button>
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="3" className="p-24 text-center">
-                  <div className="flex flex-col items-center gap-2 opacity-20">
-                    <span className="text-5xl">📅</span>
-                    <p className="uppercase font-black text-[10px] tracking-[0.5em]">
-                      No hay citas agendadas
+                <td colSpan="3" className="p-32 text-center">
+                  <div className="flex flex-col items-center gap-4 opacity-10">
+                    <span className="text-6xl">📅</span>
+                    <p className="uppercase font-black text-[10px] tracking-[1em]">
+                      Registro de Citas Vacío
                     </p>
                   </div>
                 </td>

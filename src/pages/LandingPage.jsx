@@ -51,230 +51,258 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="space-y-32 pb-20 bg-[#FDFCFB] font-sans relative">
+    <div className="space-y-40 pb-20 bg-[#050505] font-sans relative overflow-hidden">
+      {/* Orbes Globales de Fondo */}
+      <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-gold-500/10 rounded-full blur-[150px]"></div>
+      <div className="absolute middle-[50%] right-[-10%] w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[150px]"></div>
+
       {/* --- SECCIÓN HERO --- */}
-      <section className="pt-16 px-4">
-        <div className="relative overflow-hidden rounded-[4rem] bg-white border border-gray-100 p-10 md:p-24 shadow-2xl">
-          <div className="max-w-2xl relative z-10">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="text-2xl font-black italic text-[#1E3A8A]">
+      <section className="pt-24 px-6">
+        <div className="relative overflow-hidden rounded-[5rem] bg-[#0A0A0A] border border-white/5 p-12 md:p-32 shadow-3xl min-h-[85vh] flex items-center">
+          <div className="max-w-3xl relative z-10">
+            <div className="flex items-center gap-4 mb-10">
+              <span className="text-3xl font-black italic text-gold-gradient font-display">
                 SV
               </span>
-              <div className="h-6 w-[1px] bg-gray-200"></div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400">
-                Beauty Studio
+              <div className="h-8 w-[1px] bg-white/10"></div>
+              <span className="text-[11px] font-black uppercase tracking-[0.6em] text-gray-500">
+                Elite Beauty Studio
               </span>
             </div>
-            <h1 className="text-7xl md:text-9xl font-black text-[#1E3A8A] uppercase tracking-tighter leading-[0.8] mb-8">
-              BEAUTY <br />
-              <span className="italic text-[#C5A059]">CATALOG</span>
+            <h1 className="text-8xl md:text-[11rem] font-black text-white uppercase tracking-tighter leading-[0.75] mb-12 font-display">
+              LUXURY <br />
+              <span className="text-gold-gradient italic">CATALOG</span>
             </h1>
-            <div className="flex flex-wrap gap-4">
+            <p className="text-gray-400 text-lg mb-12 max-w-lg leading-relaxed font-medium uppercase tracking-widest text-[10px]">
+              Especialistas en la arquitectura de tu mirada y la elegancia de tus manos. Un refugio de exclusividad en Bello, Antioquia.
+            </p>
+            <div className="flex flex-wrap gap-6">
               <Link
                 to="/agendas"
-                className="bg-[#1E3A8A] text-white px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-widest hover:scale-105 transition-all shadow-2xl shadow-blue-200"
+                className="bg-gold-gradient text-black px-14 py-7 rounded-2xl font-black uppercase text-[10px] tracking-[0.3em] hover:scale-105 transition-all gold-shadow"
               >
-                Agendar Cita
+                Reservar Ahora
               </Link>
               <Link
                 to="/admin-panel"
-                className="bg-[#C5A059] text-white px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-widest hover:scale-105 transition-all shadow-2xl shadow-yellow-200"
+                className="bg-white/5 text-white border border-white/10 px-14 py-7 rounded-2xl font-black uppercase text-[10px] tracking-[0.3em] hover:bg-white/10 transition-all backdrop-blur-xl"
               >
-                Panel Admin
+                Panel Elite
               </Link>
               <button
                 type="button"
                 onClick={scrollToContacto}
-                className="bg-white text-[#1E3A8A] border border-[#1E3A8A] px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-[#F8F8F8] transition-all shadow-sm"
+                className="text-gray-500 hover:text-white px-8 py-7 font-black uppercase text-[10px] tracking-[0.3em] transition-all"
               >
-                Contacto
+                Ubicación
               </button>
             </div>
           </div>
-          <div className="absolute top-0 right-0 h-full w-1/2 hidden md:block opacity-40 lg:opacity-100">
+          <div className="absolute top-0 right-0 h-full w-1/2 hidden lg:block overflow-hidden">
             <img
               src={manicuraImg}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover scale-110 grayscale brightness-50 contrast-125"
               alt="Estética"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0A0A0A]"></div>
           </div>
         </div>
       </section>
 
       {/* --- 1. GALERÍA DE PRODUCTOS (Nuestros Servicios) --- */}
-      <section className="px-6 max-w-7xl mx-auto">
-        <div className="flex justify-between items-end mb-12">
+      <section className="px-8 max-w-7xl mx-auto relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div>
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#C5A059] mb-2 block">
-              Professional Results
+            <span className="text-[10px] font-black uppercase tracking-[0.6em] text-accent mb-4 block">
+              The Art of Perfection
             </span>
-            <h2 className="text-5xl font-black text-[#1E3A8A] uppercase tracking-tighter italic">
-              Nuestros <span className="text-black">Productos</span>
+            <h2 className="text-6xl md:text-7xl font-black text-white uppercase tracking-tighter italic font-display">
+              Nuestra <span className="text-gold-gradient">Colección</span>
             </h2>
           </div>
           <button
             onClick={() => setVisorProductos(true)}
-            className="text-[10px] font-black uppercase tracking-widest border-b-2 border-black pb-1 hover:text-[#C5A059] hover:border-[#C5A059] transition-all"
+            className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 hover:text-white border-b border-gray-800 hover:border-accent pb-2 transition-all"
           >
-            Ver catálogo completo
+            Explorar catálogo completo
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
           {productos.map((prod) => (
             <div key={prod.id} className="group cursor-pointer">
-              <div className="relative h-80 rounded-[2.5rem] overflow-hidden mb-6 shadow-lg border border-gray-100">
+              <div className="relative h-[600px] rounded-[4rem] overflow-hidden mb-10 shadow-3xl border-2 border-white/5 group-hover:border-accent/30 transition-all duration-700">
                 <img
                   src={prod.img}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 brightness-90 group-hover:brightness-110"
                   alt={prod.nombre}
                 />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-[9px] font-black uppercase tracking-widest text-[#1E3A8A]">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                <div className="absolute top-8 right-8 bg-black/60 backdrop-blur-2xl px-6 py-2.5 rounded-full text-[9px] font-black uppercase tracking-[0.4em] text-accent border border-white/10 shadow-2xl">
                   {prod.tag}
                 </div>
+                <div className="absolute bottom-10 left-10 right-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
+                    <p className="text-white font-display text-2xl font-black uppercase tracking-tighter leading-none mb-2">
+                        {prod.nombre}
+                    </p>
+                    <p className="text-accent font-black text-xs tracking-[0.2em]">{prod.precio}</p>
+                </div>
               </div>
-              <h4 className="font-black text-lg uppercase tracking-tight text-[#1E3A8A]">
-                {prod.nombre}
-              </h4>
-              <p className="text-[#C5A059] font-bold italic">{prod.precio}</p>
+              <div className="text-center md:text-left px-4 group-hover:opacity-0 transition-opacity">
+                <h4 className="font-black text-2xl uppercase tracking-tighter text-white font-display">
+                  {prod.nombre}
+                </h4>
+                <p className="text-accent font-black italic text-base mt-2 tracking-widest">{prod.precio}</p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
       {/* --- 2. GALERÍA DE LA SEDE (El Espacio) --- */}
-      <section className="px-6 py-24 bg-[#1E3A8A] rounded-[5rem] mx-4 shadow-3xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-          <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-white rounded-full blur-[120px]"></div>
+      <section className="px-6 py-32 bg-[#0A0A0A] rounded-[6rem] mx-6 shadow-3xl relative overflow-hidden border border-white/5">
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+          <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-gold-gradient rounded-full blur-[180px] opacity-20"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#C5A059] mb-4 block">
-              Premium Experience
+          <div className="text-center mb-24">
+            <span className="text-[10px] font-black uppercase tracking-[0.7em] text-accent mb-6 block">
+              Architectural Design
             </span>
-            <h2 className="text-6xl font-black text-white uppercase tracking-tighter italic">
-              Nuestra <span className="text-[#C5A059]">Sede</span>
+            <h2 className="text-7xl font-black text-white uppercase tracking-tighter italic font-display">
+              El <span className="text-gold-gradient">Santuario</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[200px]">
-            <div className="md:col-span-4 md:row-span-2 rounded-[3rem] overflow-hidden group border border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[350px]">
+            <div className="md:col-span-5 md:row-span-2 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
               <img
                 src={manicuraImg}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 brightness-75 group-hover:brightness-100 group-hover:grayscale-0"
                 alt="Sede 1"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
-            <div className="md:col-span-8 md:row-span-1 rounded-[3rem] overflow-hidden group border border-white/10">
+            <div className="md:col-span-7 md:row-span-1 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
               <img
                 src={mascarillaImg}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 brightness-75 group-hover:brightness-100 group-hover:grayscale-0"
                 alt="Sede 2"
               />
             </div>
-            <div className="md:col-span-4 md:row-span-1 rounded-[3rem] overflow-hidden group border border-white/10">
+            <div className="md:col-span-3 md:row-span-1 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
               <img
                 src={pestanasImg}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 brightness-75 group-hover:brightness-100 group-hover:grayscale-0"
                 alt="Sede 3"
               />
             </div>
-            <div className="md:col-span-4 md:row-span-1 rounded-[3rem] overflow-hidden group border border-white/10">
+            <div className="md:col-span-4 md:row-span-1 rounded-[4rem] overflow-hidden group border-2 border-white/10 shadow-2xl relative">
               <img
                 src={unasImg}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 brightness-75 group-hover:brightness-100 group-hover:grayscale-0"
                 alt="Sede 4"
               />
             </div>
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-20">
             <button
               onClick={() => setVisorSede(true)}
-              className="bg-[#C5A059] text-black px-12 py-5 rounded-full font-black uppercase text-[10px] tracking-widest hover:bg-white transition-all"
+              className="bg-gold-gradient text-black px-16 py-7 rounded-full font-black uppercase text-[10px] tracking-[0.4em] hover:scale-105 transition-all gold-shadow"
             >
-              Hacer Tour Virtual
+              Iniciar Tour de Lujo
             </button>
           </div>
         </div>
       </section>
 
       {/* --- SECCIÓN UBICACIÓN (MAPA) --- */}
-      <section ref={contactoRef} className="px-6 max-w-7xl mx-auto">
-        <div className="bg-white rounded-[4rem] overflow-hidden border border-gray-100 shadow-2xl grid md:grid-cols-2">
-          <div className="p-12 md:p-20 flex flex-col justify-center">
-            <h3 className="text-5xl font-black text-[#1E3A8A] uppercase tracking-tighter italic mb-6">
-              Dónde <span className="text-black">Estamos</span>
+      <section ref={contactoRef} className="px-8 max-w-7xl mx-auto">
+        <div className="bg-[#0A0A0A] rounded-[5rem] overflow-hidden border border-white/5 shadow-3xl grid lg:grid-cols-2">
+          <div className="p-16 md:p-24 flex flex-col justify-center">
+            <span className="text-[10px] font-black uppercase tracking-[0.6em] text-accent mb-6 block">
+                Exclusive Location
+            </span>
+            <h3 className="text-6xl font-black text-white uppercase tracking-tighter italic mb-8 font-display">
+              Visítanos <span className="text-gray-600">Hoy</span>
             </h3>
-            <p className="text-xl font-bold italic mb-8">
-              Bello, Antioquia - Edificio Platinum
+            <p className="text-2xl font-bold italic mb-12 text-white/80">
+              Bello, Antioquia - <span className="text-accent">Edificio Platinum</span>
             </p>
-            <iframe
-              title="Mapa"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15861.442!2d-75.56!3d6.33!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTknNDguMCJOIDc1wrAzMSczNi4wIlc!5e0!3m2!1ses!2sco!4v1620000000000"
-              className="w-full h-64 rounded-3xl grayscale contrast-125 border-none shadow-inner"
-              allowFullScreen=""
-            ></iframe>
-          </div>
-          <div className="bg-[#F7DC6F] p-12 flex items-center justify-center text-center">
-            <div>
-              <p className="text-black font-black text-3xl uppercase tracking-tighter mb-4 italic">
-                ¿Lista para tu <br /> transformación?
-              </p>
-              <a
-                href="https://wa.me/573242780446"
-                target="_blank"
-                className="bg-black text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest"
-              >
-                Chat Directo
-              </a>
+            <div className="relative group">
+                <iframe
+                title="Mapa"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3965.2145214370985!2d-75.69749999999999!3d6.3662778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMjEnNTguNiJOIDc1wrA0MSc1MS4wIlc!5e0!3m2!1ses!2sco!4v1777465471145!5m2!1ses!2sco"
+                className="w-full h-80 rounded-[3rem] grayscale invert contrast-125 brightness-75 border-none shadow-2xl opacity-70 group-hover:opacity-100 transition-opacity"
+                allowFullScreen=""
+                ></iframe>
+                <div className="absolute inset-0 rounded-[3rem] border border-white/5 pointer-events-none group-hover:border-accent/20 transition-all"></div>
             </div>
+          </div>
+          <div className="bg-gold-gradient p-16 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden">
+             <div className="absolute inset-0 bg-black/5"></div>
+             <div className="relative z-10">
+                <p className="text-black font-black text-5xl uppercase tracking-tighter mb-10 italic font-display leading-[0.9]">
+                  ¿Lista para tu <br /> <span className="bg-black text-white px-4 py-1 inline-block mt-2">TRANSFORMACIÓN?</span>
+                </p>
+                <a
+                  href="https://wa.me/573242780446"
+                  target="_blank"
+                  className="bg-black text-white px-16 py-7 rounded-2xl font-black uppercase text-[10px] tracking-[0.4em] hover:scale-110 transition-all inline-block shadow-2xl"
+                >
+                  Chat de Prioridad VIP
+                </a>
+             </div>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="text-center py-10">
-        <p className="text-gray-300 text-[10px] font-black uppercase tracking-[1em]">
-          SV Beauty Studio — 2026
+      <footer className="text-center py-20 border-t border-white/5">
+        <p className="text-gray-700 text-[10px] font-black uppercase tracking-[1.5em]">
+          SV BEAUTY STUDIO — ELITE EXPERIENCE 2026
         </p>
       </footer>
 
-      {/* MODALES / VISORES (Similares para ambos) */}
+      {/* MODALES / VISORES */}
       {(visorSede || visorProductos) && (
-        <div className="fixed inset-0 bg-black/98 z-[100] p-6 backdrop-blur-xl flex flex-col items-center overflow-y-auto">
-          <header className="w-full max-w-7xl flex justify-between items-center mb-10 pb-6 border-b border-white/10">
-            <h4 className="text-[#C5A059] font-black text-4xl uppercase italic tracking-tighter">
-              {visorSede ? "Premium Space" : "Nuestros Trabajos"}
+        <div className="fixed inset-0 bg-black/95 z-[100] p-10 backdrop-blur-3xl flex flex-col items-center overflow-y-auto">
+          <header className="w-full max-w-7xl flex justify-between items-center mb-16 pb-8 border-b border-white/10">
+            <h4 className="text-gold-gradient font-black text-5xl uppercase italic tracking-tighter font-display">
+              {visorSede ? "Premium Sanctuary" : "The Art Gallery"}
             </h4>
             <button
               onClick={() => {
                 setVisorSede(false);
                 setVisorProductos(false);
               }}
-              className="text-white w-14 h-14 rounded-full font-black text-2xl hover:bg-white hover:text-black transition-all"
+              className="text-white w-16 h-16 rounded-full font-black text-3xl hover:bg-gold-gradient hover:text-black transition-all border border-white/10 flex items-center justify-center"
             >
               ✕
             </button>
           </header>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 w-full max-w-7xl pb-20">
             {[
               manicuraImg,
               mascarillaImg,
               pestanasImg,
               unasImg,
               manicuraImg,
+              pestanasImg,
+              mascarillaImg,
+              unasImg
             ].map((img, i) => (
               <div
                 key={i}
-                className="h-72 rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5"
+                className="h-[500px] rounded-[4rem] overflow-hidden shadow-3xl border border-white/5 group"
               >
                 <img
                   src={img}
-                  className="w-full h-full object-cover"
-                  alt="Galería"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
+                  alt="Galería Elite"
                 />
               </div>
             ))}

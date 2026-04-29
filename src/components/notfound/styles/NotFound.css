@@ -37,7 +37,7 @@
   /* TITULOS EN AZUL PREMIUM */
   .contTxt h1 {
     font-size: 100px; /* Más imponente */
-    color: #1e3a8a; /* Azul Profundo */
+    color: #1e3a8a; /* Azul Profundo (Primary) */
     margin-bottom: 10px;
     font-weight: 900;
     letter-spacing: -0.05em;
@@ -48,7 +48,7 @@
 
   .contTxt h2 {
     font-size: 36px;
-    color: #2563eb; /* Azul Cobalto */
+    color: #2563eb; /* Azul Cobalto (Secondary) */
     line-height: 1.1;
     margin-bottom: 20px;
     font-weight: 800;
@@ -58,7 +58,7 @@
 
   .contTxt p {
     font-size: 18px;
-    color: #1e3a8a; /* Azul Marino suave */
+    color: #1e3a8a; /* Azul Marino suave (Primary) */
     margin-bottom: 30px;
     font-weight: 600;
     opacity: 0.8;

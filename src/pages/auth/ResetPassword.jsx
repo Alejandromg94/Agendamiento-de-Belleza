@@ -18,21 +18,22 @@ const ResetPassword = () => {
   };
 
   return (
-    <main className="grow flex items-center justify-center px-4 min-h-screen bg-[conic-gradient(at_top_right,var(--tw-gradient-stops))] from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-      <div className="absolute top-[-10%] left-[-10%] w-125 h-125 bg-blue-600/20 rounded-full blur-[120px] animate-pulse"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-125 h-125 bg-purple-600/20 rounded-full blur-[120px] animate-pulse delay-700"></div>
+    <main className="grow flex items-center justify-center px-4 min-h-screen bg-[#050505] relative overflow-hidden font-sans">
+      {/* Orbes Decorativos */}
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-[120px]"></div>
 
-      <div className="max-w-md w-full bg-slate-900/60 backdrop-blur-2xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] p-10 border border-white/10 z-10">
-        <h1 className="text-4xl font-black text-center mb-4 tracking-tighter bg-linear-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
-          RESETEAR CLAVE
+      <div className="max-w-md w-full bg-[#0A0A0A] backdrop-blur-3xl rounded-[4rem] p-12 border border-white/5 z-10 shadow-3xl">
+        <h1 className="text-4xl font-black text-center mb-6 tracking-tighter text-white uppercase italic font-display">
+          RESETEAR <span className="text-gold-gradient not-italic">CLAVE</span>
         </h1>
-        <p className="text-slate-400 text-center mb-8 text-sm font-medium">
-          Ingresa tu nueva contraseña para recuperar el acceso.
+        <p className="text-gray-500 text-center mb-10 text-[10px] font-black uppercase tracking-[0.4em] leading-relaxed">
+          Ingresa tu nueva contraseña para recuperar tu lugar en la élite.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-7">
-          <div className="formulario__grupo">
-            <label className="block text-xs font-bold text-slate-400 mb-2 ml-1 uppercase tracking-widest">
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <div>
+            <label className="block text-[10px] font-black text-gray-600 mb-3 ml-1 uppercase tracking-widest">
               Nueva Contraseña
             </label>
             <input
@@ -41,12 +42,12 @@ const ResetPassword = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               required
-              className="w-full px-6 py-4 bg-slate-800/40 border border-slate-700/50 rounded-2xl text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
+              className="w-full px-8 py-5 bg-[#121212] border border-white/5 rounded-2xl text-white font-medium focus:outline-none focus:ring-1 focus:ring-accent transition-all placeholder:text-gray-800"
             />
           </div>
 
-          <div className="formulario__grupo">
-            <label className="block text-xs font-bold text-slate-400 mb-2 ml-1 uppercase tracking-widest">
+          <div>
+            <label className="block text-[10px] font-black text-gray-600 mb-3 ml-1 uppercase tracking-widest">
               Confirmar Contraseña
             </label>
             <input
@@ -55,29 +56,29 @@ const ResetPassword = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="••••••••"
               required
-              className="w-full px-6 py-4 bg-slate-800/40 border border-slate-700/50 rounded-2xl text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
+              className="w-full px-8 py-5 bg-[#121212] border border-white/5 rounded-2xl text-white font-medium focus:outline-none focus:ring-1 focus:ring-accent transition-all placeholder:text-gray-800"
             />
           </div>
 
           {error && (
-            <p className="text-red-400 text-xs font-bold text-center bg-red-400/10 py-2 rounded-lg border border-red-400/20">
+            <p className="text-red-500 text-[10px] font-black text-center bg-red-950/20 py-4 rounded-2xl border border-red-900/20 uppercase tracking-widest">
               {error}
             </p>
           )}
 
-          <div className="flex flex-col gap-4 pt-4">
+          <div className="flex flex-col gap-6 pt-4">
             <button
               type="submit"
-              className="w-full bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black py-4 rounded-2xl transition-all shadow-lg active:scale-[0.98]"
+              className="w-full bg-gold-gradient text-black font-black py-6 rounded-2xl transition-all gold-shadow active:scale-[0.98] uppercase tracking-[0.4em] text-[11px]"
             >
               ACTUALIZAR CONTRASEÑA
             </button>
 
             <Link
               to="/"
-              className="text-xs text-center block text-slate-500 hover:text-blue-400 transition-colors font-medium"
+              className="text-[11px] text-center block mt-2 text-gray-500 hover:text-white transition-all font-black uppercase tracking-[0.3em] w-max mx-auto"
             >
-              Volver al inicio de sesión
+              Volver al Login
             </Link>
           </div>
         </form>

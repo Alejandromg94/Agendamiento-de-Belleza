@@ -44,8 +44,8 @@ const AdminLayout = () => {
         <div className="h-full flex flex-col">
           {/* Logo / Header del Sidebar */}
           <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100">
-            <span className="text-xl font-bold bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent">
-              BellaAdmin
+            <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent italic uppercase tracking-tighter">
+              Beauty-flow
             </span>
             <button 
               className="lg:hidden text-slate-400 hover:text-slate-600"
@@ -67,13 +67,13 @@ const AdminLayout = () => {
                 className={({ isActive }) => `
                   flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium transition-all duration-200
                   ${isActive 
-                    ? 'bg-rose-50 text-rose-600' 
+                    ? 'bg-primary/5 text-primary' 
                     : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}
                 `}
               >
                 {({ isActive }) => (
                   <>
-                    <item.icon size={20} className={isActive ? 'text-rose-500' : 'text-slate-400'} />
+                    <item.icon size={20} className={isActive ? 'text-primary' : 'text-slate-400'} />
                     {item.name}
                   </>
                 )}
@@ -105,7 +105,7 @@ const AdminLayout = () => {
             </button>
             
             {/* Buscador opcional */}
-            <div className="hidden sm:flex items-center bg-slate-100 rounded-full px-3 py-1.5 focus-within:ring-2 focus-within:ring-rose-200 focus-within:bg-white transition-all">
+            <div className="hidden sm:flex items-center bg-slate-100 rounded-full px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary/20 focus-within:bg-white transition-all">
               <Search size={16} className="text-slate-400" />
               <input 
                 type="text" 
@@ -118,7 +118,7 @@ const AdminLayout = () => {
           <div className="flex items-center gap-4 border-l pl-4 border-slate-200 ml-auto">
             <button className="relative p-2 text-slate-400 hover:text-slate-600 transition-colors">
               <Bell size={20} />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-rose-500 rounded-full border border-white"></span>
+              <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full border border-white"></span>
             </button>
             
             <div className="flex items-center gap-3 cursor-pointer">
@@ -126,7 +126,7 @@ const AdminLayout = () => {
                 <p className="text-sm font-semibold text-slate-700">Administrador</p>
                 <p className="text-xs text-slate-500">admin@bella.com</p>
               </div>
-              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-rose-400 to-pink-500 flex items-center justify-center text-white font-bold shadow-sm">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold shadow-sm">
                 A
               </div>
             </div>

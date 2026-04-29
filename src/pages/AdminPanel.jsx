@@ -98,27 +98,27 @@ const AdminPanel = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#FDFCFB] font-sans">
+    <div className="flex min-h-screen bg-[#050505] font-sans">
       {/* SIDEBAR FIJO */}
-      <aside className="w-72 bg-black text-white flex flex-col fixed h-full shadow-2xl z-20">
-        <div className="p-10 text-center border-b border-[#C5A059]/20">
-          <h2 className="text-[#F7DC6F] font-black text-2xl uppercase italic tracking-tighter leading-none">
-            Stefania Vanegas
+      <aside className="w-80 bg-[#0A0A0A] text-white flex flex-col fixed h-full shadow-2xl z-20 border-r border-white/5">
+        <div className="p-12 text-center border-b border-white/5 bg-black/20">
+          <h2 className="text-gold-gradient font-black text-3xl uppercase italic tracking-tighter leading-none font-display">
+            SV STUDIO
           </h2>
-          <p className="text-[10px] tracking-[0.4em] text-gray-500 mt-2 uppercase">
-            Beauty Studio
+          <p className="text-[10px] tracking-[0.5em] text-gray-600 mt-4 uppercase font-black">
+            Administration
           </p>
         </div>
 
-        <nav className="p-6 mt-8 space-y-4">
+        <nav className="p-8 mt-10 space-y-6">
           <button
             onClick={() => {
               setActiveTab("usuarios");
               resetUserForm();
             }}
-            className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl transition-all font-bold text-sm ${activeTab === "usuarios" ? "bg-[#C5A059] text-white shadow-xl shadow-[#C5A059]/30" : "text-gray-500 hover:bg-white/5"}`}
+            className={`w-full flex items-center gap-5 px-8 py-5 rounded-[2rem] transition-all font-black text-[10px] uppercase tracking-widest ${activeTab === "usuarios" ? "bg-gold-gradient text-black gold-shadow" : "text-gray-500 hover:bg-white/5 hover:text-white"}`}
           >
-            <span className="text-lg">👥</span> Gestión de Staff
+            <span className="text-lg">👥</span> Gestión Staff
           </button>
 
           <button
@@ -126,9 +126,9 @@ const AdminPanel = () => {
               setActiveTab("agenda");
               navigate("/agenda");
             }}
-            className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl transition-all font-bold text-sm ${activeTab === "agenda" ? "bg-[#C5A059] text-white shadow-xl shadow-[#C5A059]/30" : "text-gray-500 hover:bg-white/5"}`}
+            className={`w-full flex items-center gap-5 px-8 py-5 rounded-[2rem] transition-all font-black text-[10px] uppercase tracking-widest ${activeTab === "agenda" ? "bg-gold-gradient text-black gold-shadow" : "text-gray-500 hover:bg-white/5 hover:text-white"}`}
           >
-            <span className="text-lg">📅</span> Agenda de Citas
+            <span className="text-lg">📅</span> Agenda Citas
           </button>
         </nav>
 
@@ -137,45 +137,46 @@ const AdminPanel = () => {
             localStorage.removeItem("user_token");
             navigate("/");
           }}
-          className="mt-auto m-8 p-4 bg-red-900/10 text-red-500 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all border border-red-900/20"
+          className="mt-auto m-10 p-5 bg-red-950/20 text-red-500 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all border border-red-900/20"
         >
-          Cerrar Sesión
+          Finalizar Sesión
         </button>
       </aside>
 
       {/* ÁREA DE TRABAJO */}
-      <main className="flex-grow ml-72 p-12">
-        <div className="mb-10 flex justify-between items-center">
+      <main className="flex-grow ml-80 p-16">
+        <div className="mb-16 flex justify-between items-center">
           <div>
-            <h1 className="text-4xl font-black text-black uppercase tracking-tighter italic">
-              Administrar Staff
+            <h1 className="text-5xl font-black text-white uppercase tracking-tighter italic font-display">
+              Control de <span className="text-gold-gradient">Personal</span>
             </h1>
-            <div className="w-20 h-1 bg-[#C5A059] mt-2"></div>
+            <div className="w-24 h-1 bg-gold-gradient mt-4"></div>
           </div>
           <button
-            onClick={() => navigate("/admin")}
-            className="bg-[#1E3A8A] text-white px-6 py-3 rounded-2xl font-black uppercase text-xs tracking-widest hover:scale-105 transition-all shadow-2xl shadow-blue-200"
+            onClick={() => navigate("/")}
+            className="bg-white/5 text-white border border-white/10 px-8 py-4 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-white/10 transition-all shadow-2xl"
           >
-            Ir al Inicio
+            Panel Público
           </button>
         </div>
 
         {/* SÚPER FORMULARIO ACTUALIZADO */}
         <section
-          className={`mb-12 p-8 rounded-[3rem] shadow-2xl border-2 transition-all ${editandoId !== null ? "bg-[#F7DC6F]/5 border-[#C5A059]" : "bg-white border-transparent"}`}
+          className={`mb-16 p-10 rounded-[4rem] shadow-3xl border transition-all relative overflow-hidden ${editandoId !== null ? "bg-gold-gradient/5 border-accent" : "bg-[#0A0A0A] border-white/5"}`}
         >
-          <h3 className="text-[10px] font-black uppercase tracking-widest text-[#C5A059] mb-6 flex items-center gap-2">
+          <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-8 flex items-center gap-3">
+            <span className={`w-2 h-2 rounded-full ${editandoId !== null ? "bg-yellow-500 animate-pulse" : "bg-green-500"}`}></span>
             {editandoId !== null
-              ? "🟡 Editando usuario"
-              : "🟢 Registrar nuevo usuario"}
+              ? "Modificando Credenciales"
+              : "Alta de Nuevo Personal"}
           </h3>
 
           <form
             onSubmit={handleUserSubmit}
-            className="flex flex-wrap gap-6 items-end"
+            className="flex flex-wrap gap-8 items-end relative z-10"
           >
-            <div className="flex-1 min-w-[180px]">
-              <label className="text-[10px] font-black uppercase mb-2 block ml-1">
+            <div className="flex-1 min-w-[220px]">
+              <label className="text-[9px] font-black uppercase mb-3 block ml-1 text-gray-500 tracking-widest">
                 Nombre Completo
               </label>
               <input
@@ -184,14 +185,14 @@ const AdminPanel = () => {
                 onChange={(e) =>
                   setUserFormData({ ...userFormData, nombre: e.target.value })
                 }
-                className="w-full bg-gray-50 border-gray-200 border p-4 rounded-2xl focus:border-[#C5A059] outline-none transition-all shadow-sm"
+                className="w-full bg-[#121212] border-white/5 border px-6 py-5 rounded-2xl focus:border-accent outline-none transition-all text-white font-medium"
                 required
               />
             </div>
 
-            <div className="flex-1 min-w-[180px]">
-              <label className="text-[10px] font-black uppercase mb-2 block ml-1">
-                Email
+            <div className="flex-1 min-w-[220px]">
+              <label className="text-[9px] font-black uppercase mb-3 block ml-1 text-gray-500 tracking-widest">
+                Email Corporativo
               </label>
               <input
                 type="email"
@@ -199,22 +200,21 @@ const AdminPanel = () => {
                 onChange={(e) =>
                   setUserFormData({ ...userFormData, correo: e.target.value })
                 }
-                className="w-full bg-gray-50 border-gray-200 border p-4 rounded-2xl focus:border-[#C5A059] outline-none transition-all shadow-sm"
+                className="w-full bg-[#121212] border-white/5 border px-6 py-5 rounded-2xl focus:border-accent outline-none transition-all text-white font-medium"
                 required
               />
             </div>
 
-            {/* SELECT DE ROL ACTUALIZADO */}
-            <div className="w-48">
-              <label className="text-[10px] font-black uppercase mb-2 block ml-1 text-[#C5A059]">
-                Tipo de Usuario
+            <div className="w-56">
+              <label className="text-[9px] font-black uppercase mb-3 block ml-1 text-accent tracking-widest">
+                Rango / Rol
               </label>
               <select
                 value={userFormData.rol}
                 onChange={(e) =>
                   setUserFormData({ ...userFormData, rol: e.target.value })
                 }
-                className="w-full bg-gray-50 border-gray-200 border p-4 rounded-2xl focus:border-[#C5A059] outline-none transition-all shadow-sm font-bold text-xs cursor-pointer"
+                className="w-full bg-[#121212] border-white/5 border px-6 py-5 rounded-2xl focus:border-accent outline-none transition-all text-white font-black text-xs cursor-pointer italic"
               >
                 <option value="Administrador">Administrador</option>
                 <option value="Profesional">Profesional</option>
@@ -222,9 +222,9 @@ const AdminPanel = () => {
               </select>
             </div>
 
-            <div className="w-32">
-              <label className="text-[10px] font-black uppercase mb-2 block ml-1">
-                Clave
+            <div className="w-40">
+              <label className="text-[9px] font-black uppercase mb-3 block ml-1 text-gray-500 tracking-widest">
+                Acceso
               </label>
               <input
                 type="text"
@@ -235,25 +235,25 @@ const AdminPanel = () => {
                     contrasena: e.target.value,
                   })
                 }
-                className="w-full bg-gray-50 border-gray-200 border p-4 rounded-2xl focus:border-[#C5A059] outline-none shadow-sm"
+                className="w-full bg-[#121212] border-white/5 border px-6 py-5 rounded-2xl focus:border-accent outline-none text-white font-medium"
                 required
               />
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               <button
                 type="submit"
-                className="bg-black text-white px-10 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-[#C5A059] transition-all shadow-lg active:scale-95"
+                className="bg-gold-gradient text-black px-12 py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all gold-shadow active:scale-95"
               >
-                {editandoId !== null ? "Guardar Cambios" : "Registrar"}
+                {editandoId !== null ? "Actualizar" : "Vincular"}
               </button>
               {editandoId !== null && (
                 <button
                   onClick={resetUserForm}
                   type="button"
-                  className="bg-gray-200 px-6 py-4 rounded-2xl font-black text-[10px] uppercase text-gray-500"
+                  className="bg-white/5 text-gray-500 px-6 py-5 rounded-2xl font-black text-sm hover:text-white transition-all"
                 >
-                  X
+                  ✕
                 </button>
               )}
             </div>
@@ -261,77 +261,77 @@ const AdminPanel = () => {
         </section>
 
         {/* TABLA DE PERSONAL */}
-        <div className="bg-white rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden">
-          <table className="w-full text-left">
-            <thead className="bg-black text-white">
-              <tr>
-                <th className="p-6 text-[10px] font-black uppercase tracking-widest">
-                  Estado / Usuario
+        <div className="bg-[#0A0A0A] rounded-[4rem] shadow-3xl border border-white/5 overflow-hidden">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-black/40 border-b border-white/5">
+                <th className="p-8 text-[9px] font-black uppercase tracking-[0.3em] text-gray-500">
+                  Estado / Integrante
                 </th>
-                <th className="p-6 text-[10px] font-black uppercase tracking-widest">
-                  Rol
+                <th className="p-8 text-[9px] font-black uppercase tracking-[0.3em] text-gray-500">
+                  Jerarquía
                 </th>
-                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-center">
+                <th className="p-8 text-[9px] font-black uppercase tracking-[0.3em] text-center text-gray-500">
                   Acciones
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-50">
+            <tbody className="divide-y divide-white/5">
               {usuarios.map((u, i) => (
                 <tr
                   key={i}
-                  className={`hover:bg-gray-50 transition-all ${!u.activo ? "opacity-40 grayscale" : ""}`}
+                  className={`hover:bg-white/[0.02] transition-all ${!u.activo ? "opacity-30 grayscale" : ""}`}
                 >
-                  <td className="p-6">
-                    <div className="flex items-center gap-4">
+                  <td className="p-8">
+                    <div className="flex items-center gap-6">
                       <button
                         onClick={() => toggleUserStatus(i)}
-                        className={`w-10 h-5 rounded-full relative transition-all ${u.activo ? "bg-[#C5A059]" : "bg-gray-300"}`}
+                        className={`w-12 h-6 rounded-full relative transition-all border border-white/10 ${u.activo ? "bg-accent" : "bg-gray-900"}`}
                       >
                         <div
-                          className={`absolute top-1 w-3 h-3 bg-white rounded-full transition-all ${u.activo ? "left-6" : "left-1"}`}
+                          className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-all ${u.activo ? "left-7" : "left-1"}`}
                         ></div>
                       </button>
                       <div>
-                        <div className="font-black text-gray-800 uppercase text-xs tracking-tight">
+                        <div className="font-black text-white uppercase text-sm tracking-tight font-display">
                           {u.nombre}
                         </div>
-                        <div className="text-[10px] text-gray-400 font-medium">
+                        <div className="text-[10px] text-gray-500 font-bold tracking-widest mt-1">
                           {u.correo}
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td className="p-6">
+                  <td className="p-8">
                     <span
-                      className={`text-[9px] font-black px-4 py-1.5 rounded-full uppercase border ${
+                      className={`text-[8px] font-black px-5 py-2 rounded-full uppercase tracking-widest border ${
                         u.rol === "Administrador"
-                          ? "bg-black text-white"
+                          ? "bg-white text-black border-white"
                           : u.rol === "Profesional"
-                            ? "bg-[#F7DC6F]/20 text-[#C5A059] border-[#C5A059]/20"
-                            : "bg-gray-100 text-gray-500 border-gray-200"
+                            ? "bg-accent/10 text-accent border-accent/20"
+                            : "bg-gray-900 text-gray-500 border-white/5"
                       }`}
                     >
                       {u.rol}
                     </span>
                   </td>
-                  <td className="p-6">
-                    <div className="flex justify-center gap-4">
+                  <td className="p-8">
+                    <div className="flex justify-center gap-6">
                       <button
                         onClick={() => {
                           setEditandoId(i);
                           setUserFormData(u);
-                          window.scrollTo(0, 0);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
-                        className="text-blue-400 hover:text-blue-600 font-black text-[10px] uppercase transition-colors"
+                        className="text-accent hover:text-white font-black text-[9px] uppercase tracking-widest transition-all"
                       >
                         Editar
                       </button>
                       <button
                         onClick={() => eliminar(i)}
-                        className="text-red-300 hover:text-red-500 font-black text-[10px] uppercase transition-colors"
+                        className="text-red-900/60 hover:text-red-500 font-black text-[9px] uppercase tracking-widest transition-all"
                       >
-                        Borrar
+                        Eliminar
                       </button>
                     </div>
                   </td>
@@ -340,8 +340,8 @@ const AdminPanel = () => {
             </tbody>
           </table>
           {usuarios.length === 0 && (
-            <div className="p-24 text-center text-gray-300 uppercase font-black text-[10px] tracking-[0.5em]">
-              No hay usuarios registrados
+            <div className="p-32 text-center text-gray-700 uppercase font-black text-[10px] tracking-[1em]">
+              Registro Vacío
             </div>
           )}
         </div>
