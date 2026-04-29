@@ -44,9 +44,9 @@ const Login = () => {
         activo: true,
       },
       {
-        correo: "mariana@correo.com",
-        contrasena: "123456",
-        nombre: "Mariana Staff",
+        correo: "estefania@correo.com",
+        contrasena: "654321",
+        nombre: "Estefania Staff",
         rol: "Profesional",
         activo: true,
       },
@@ -69,8 +69,8 @@ const Login = () => {
     let listaActualizada = [...lista];
     let huboCambios = false;
 
-    usuariosIniciales.forEach(userIni => {
-      const existe = listaActualizada.some(u => u.correo === userIni.correo);
+    usuariosIniciales.forEach((userIni) => {
+      const existe = listaActualizada.some((u) => u.correo === userIni.correo);
       if (!existe) {
         listaActualizada.push(userIni);
         huboCambios = true;
@@ -94,7 +94,7 @@ const Login = () => {
 
     if (usuarioEncontrado) {
       localStorage.setItem("user_token", JSON.stringify(usuarioEncontrado));
-      
+
       // Lógica de redirección por Rol
       let url = "/";
       if (usuarioEncontrado.rol === "Administrador") {

@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Importa tus imágenes reales
 import manicuraImg from "../assets/img/uñas2.jpeg";
-import mascarillaImg from "../assets/img/mascarilla.jpeg";
+import keratinaImg from "../assets/img/Keratina.jpeg";
+import brasileñoImg from "../assets/img/Brasileño.jpeg";
 import pestanasImg from "../assets/img/pestañas.jpeg";
 import unasImg from "../assets/img/uñas1.jpeg";
 import cede1 from "../assets/img/cede1.jpeg";
@@ -12,9 +13,9 @@ import cede3 from "../assets/img/cede3.jpeg";
 import cede4 from "../assets/img/cede4.jpeg";
 import cede5 from "../assets/img/cede5.jpeg";
 import cede6 from "../assets/img/cede6.jpeg";
-import cejas1 from "../assets/img/cejas1.jpeg";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   const contactoRef = useRef(null);
 
   // Estados independientes para cada galería
@@ -43,19 +44,28 @@ const LandingPage = () => {
     },
     {
       id: 3,
-      nombre: "Limpieza Facial Profunda",
-      precio: "$120.000",
-      img: mascarillaImg,
-      tag: "Skin Care",
+      nombre: "Pestañas Volumen Brasileño",
+      precio: "$80.000",
+      img: brasileñoImg,
+      tag: "Mirada Elite",
     },
     {
       id: 4,
-      nombre: "Diseño de Cejas",
-      precio: "$35.000",
-      img: cejas1,
+      nombre: "Keratina",
+      precio: "$150.000",
+      img: keratinaImg,
       tag: "Beauty",
     },
   ];
+
+  // Determinar la ruta del panel según el rol del usuario
+  const user = JSON.parse(localStorage.getItem("user_token")) || null;
+  let panelPath = "/"; // Por defecto al login si no hay usuario
+  if (user) {
+    if (user.rol === "Administrador") panelPath = "/admin-panel";
+    else if (user.rol === "Profesional") panelPath = "/professional-panel";
+    else if (user.rol === "Cliente") panelPath = "/customer-portal";
+  }
 
   return (
     <div className="space-y-40 pb-20 bg-[#050505] font-sans relative overflow-hidden">
@@ -77,7 +87,7 @@ const LandingPage = () => {
               </span>
             </div>
             <h1 className="text-8xl md:text-[11rem] font-black text-white uppercase tracking-tighter leading-[0.75] mb-12 font-display">
-              LUXURY <br />
+              BEAUTY <br />
               <span className="text-gold-gradient italic">CATALOG</span>
             </h1>
             <p className="text-gray-400 text-lg mb-12 max-w-lg leading-relaxed font-medium uppercase tracking-widest text-[10px]">
@@ -92,7 +102,7 @@ const LandingPage = () => {
                 Reservar Ahora
               </Link>
               <Link
-                to="/admin-panel"
+                to={panelPath}
                 className="bg-white/5 text-white border border-white/10 px-14 py-7 rounded-2xl font-black uppercase text-[10px] tracking-[0.3em] hover:bg-white/10 transition-all backdrop-blur-xl"
               >
                 Panel Elite
@@ -130,7 +140,7 @@ const LandingPage = () => {
             </h2>
           </div>
           <button
-            onClick={() => setVisorProductos(true)}
+            onClick={() => navigate("/servicios")}
             className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 hover:text-white border-b border-gray-800 hover:border-accent pb-2 transition-all"
           >
             Explorar catálogo completo
@@ -319,12 +329,12 @@ const LandingPage = () => {
               ? [cede1, cede2, cede3, cede4, cede5, cede6]
               : [
                   manicuraImg,
-                  mascarillaImg,
+                  pestanasImg,
                   pestanasImg,
                   unasImg,
                   manicuraImg,
                   pestanasImg,
-                  mascarillaImg,
+                  pestanasImg,
                   unasImg,
                 ]
             ).map((img, i) => (

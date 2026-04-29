@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Agenda = () => {
@@ -11,16 +12,19 @@ const Agenda = () => {
       return [];
     }
   });
+  const location = useLocation();
   const [citaFormData, setCitaFormData] = useState({
     cliente: "",
-    servicio: "",
+    servicio: location.state?.servicio || "",
     fecha: "",
     profesional: "",
   });
 
   // Cargar lista de profesionales desde usuarios
   const profesionales = JSON.parse(localStorage.getItem("usuarios")) || [];
-  const soloPros = profesionales.filter((u) => u.rol === "Profesional" && u.activo);
+  const soloPros = profesionales.filter(
+    (u) => u.rol === "Profesional" && u.activo,
+  );
 
   // Ya no necesitamos useEffect para cargar citas
 
@@ -42,7 +46,11 @@ const Agenda = () => {
       !citaFormData.fecha ||
       !citaFormData.profesional
     ) {
-      return Swal.fire("Error", "Completa todos los campos (incluyendo el profesional)", "error");
+      return Swal.fire(
+        "Error",
+        "Completa todos los campos (incluyendo el profesional)",
+        "error",
+      );
     }
 
     const nuevaLista = [...citas, { ...citaFormData, id: Date.now() }];
@@ -83,7 +91,8 @@ const Agenda = () => {
       {/* TÍTULO DE SECCIÓN */}
       <div className="mb-12">
         <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic flex items-center gap-4 font-display">
-          <span className="text-gold-gradient text-5xl">📅</span> Agenda de <span className="text-gold-gradient">Servicios</span>
+          <span className="text-gold-gradient text-5xl">📅</span> Agenda de{" "}
+          <span className="text-gold-gradient">Servicios</span>
         </h2>
         <p className="text-[10px] uppercase tracking-[0.5em] text-gray-600 font-black mt-2">
           SV Beauty Studio Elite Optimizer
@@ -152,7 +161,10 @@ const Agenda = () => {
             <select
               value={citaFormData.profesional}
               onChange={(e) =>
-                setCitaFormData({ ...citaFormData, profesional: e.target.value })
+                setCitaFormData({
+                  ...citaFormData,
+                  profesional: e.target.value,
+                })
               }
               className="w-full bg-[#121212] border border-white/5 p-5 rounded-2xl focus:border-accent outline-none text-white font-black text-xs shadow-inner cursor-pointer"
             >
