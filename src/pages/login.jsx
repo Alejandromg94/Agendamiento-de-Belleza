@@ -35,33 +35,53 @@ const Login = () => {
   const consultarLocalStorage = (llave) => {
     const datosGuardados = localStorage.getItem(llave);
     const lista = datosGuardados ? JSON.parse(datosGuardados) : [];
+    const usuariosIniciales = [
+      {
+        correo: "admin@correo.com",
+        contrasena: "123456",
+        nombre: "Administrador SV",
+        rol: "Administrador",
+        activo: true,
+      },
+      {
+        correo: "mariana@correo.com",
+        contrasena: "123456",
+        nombre: "Mariana Staff",
+        rol: "Profesional",
+        activo: true,
+      },
+      {
+        correo: "maria@correo.com",
+        contrasena: "123456",
+        nombre: "Maria Delgado",
+        rol: "Cliente",
+        activo: true,
+      },
+    ];
+
+    // Si no hay nada, creamos la lista inicial
     if (lista.length === 0) {
-      const usuariosIniciales = [
-        {
-          correo: "admin@correo.com",
-          contrasena: "123456",
-          nombre: "Administrador SV",
-          rol: "Administrador",
-          activo: true,
-        },
-        {
-          correo: "mariana@correo.com",
-          contrasena: "123456",
-          nombre: "Mariana Staff",
-          rol: "Profesional",
-          activo: true,
-        },
-        {
-          correo: "maria@correo.com",
-          contrasena: "123456",
-          nombre: "Maria Delgado",
-          rol: "Cliente",
-          activo: true,
-        },
-      ];
       localStorage.setItem(llave, JSON.stringify(usuariosIniciales));
       return usuariosIniciales;
     }
+
+    // Si ya hay usuarios, pero faltan los de prueba, los agregamos
+    let listaActualizada = [...lista];
+    let huboCambios = false;
+
+    usuariosIniciales.forEach(userIni => {
+      const existe = listaActualizada.some(u => u.correo === userIni.correo);
+      if (!existe) {
+        listaActualizada.push(userIni);
+        huboCambios = true;
+      }
+    });
+
+    if (huboCambios) {
+      localStorage.setItem(llave, JSON.stringify(listaActualizada));
+      return listaActualizada;
+    }
+
     return lista;
   };
 
