@@ -18,7 +18,6 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const contactoRef = useRef(null);
 
-  // Estados independientes para cada galería
   const [visorSede, setVisorSede] = useState(false);
   const [visorProductos, setVisorProductos] = useState(false);
 
@@ -26,7 +25,6 @@ const LandingPage = () => {
     contactoRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Datos de ejemplo para productos
   const productos = [
     {
       id: 1,
@@ -58,9 +56,8 @@ const LandingPage = () => {
     },
   ];
 
-  // Determinar la ruta del panel según el rol del usuario
   const user = JSON.parse(localStorage.getItem("user_token")) || null;
-  let panelPath = "/"; // Por defecto al login si no hay usuario
+  let panelPath = "/";
   if (user) {
     if (user.rol === "Administrador") panelPath = "/admin-panel";
     else if (user.rol === "Profesional") panelPath = "/professional-panel";
@@ -69,11 +66,9 @@ const LandingPage = () => {
 
   return (
     <div className="space-y-40 pb-20 bg-[#050505] font-sans relative overflow-hidden">
-      {/* Orbes Globales de Fondo */}
       <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-gold-500/10 rounded-full blur-[150px]"></div>
       <div className="absolute middle-[50%] right-[-10%] w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[150px]"></div>
 
-      {/* --- SECCIÓN HERO --- */}
       <section className="pt-24 px-6">
         <div className="relative overflow-hidden rounded-[5rem] bg-[#0A0A0A] border border-white/5 p-12 md:p-32 shadow-3xl min-h-[85vh] flex items-center">
           <div className="max-w-3xl relative z-10">
@@ -128,7 +123,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- 1. GALERÍA DE PRODUCTOS (Nuestros Servicios) --- */}
       <section className="px-8 max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div>
@@ -181,8 +175,6 @@ const LandingPage = () => {
           ))}
         </div>
       </section>
-
-      {/* --- 2. GALERÍA DE LA SEDE (El Espacio) --- */}
       <section className="px-6 py-32 bg-[#0A0A0A] rounded-[6rem] mx-6 shadow-3xl relative overflow-hidden border border-white/5">
         <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
           <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-gold-gradient rounded-full blur-[180px] opacity-20"></div>
@@ -255,7 +247,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- SECCIÓN UBICACIÓN (MAPA) --- */}
       <section ref={contactoRef} className="px-8 max-w-7xl mx-auto">
         <div className="bg-[#0A0A0A] rounded-[5rem] overflow-hidden border border-white/5 shadow-3xl grid lg:grid-cols-2">
           <div className="p-16 md:p-24 flex flex-col justify-center">
@@ -300,14 +291,12 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="text-center py-20 border-t border-white/5">
         <p className="text-gray-700 text-[10px] font-black uppercase tracking-[1.5em]">
           SV BEAUTY STUDIO — ELITE EXPERIENCE 2026
         </p>
       </footer>
 
-      {/* MODALES / VISORES */}
       {(visorSede || visorProductos) && (
         <div className="fixed inset-0 bg-black/95 z-[100] p-10 backdrop-blur-3xl flex flex-col items-center overflow-y-auto">
           <header className="w-full max-w-7xl flex justify-between items-center mb-16 pb-8 border-b border-white/10">

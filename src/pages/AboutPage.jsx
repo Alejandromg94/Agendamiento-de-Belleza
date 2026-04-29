@@ -13,7 +13,6 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans overflow-hidden">
-      {/* SECCIÓN 1: EL MANIFIESTO (HERO) */}
       <section className="relative pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <span className="text-gold-gradient text-[10px] font-black uppercase tracking-[1em] mb-6 block">
@@ -32,7 +31,6 @@ const AboutPage = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent blur-3xl pointer-events-none"></div>
       </section>
 
-      {/* SECCIÓN 2: QUIENES SOMOS (EL LOCAL) */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="relative group">
@@ -80,10 +78,8 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* SECCIÓN 3: MISIÓN Y VISIÓN */}
       <section className="py-32 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* TARJETA MISIÓN */}
           <div className="group relative p-12 rounded-[4rem] bg-[#0A0A0A] border border-white/5 hover:border-gold-500/30 transition-all duration-500 overflow-hidden">
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
               <span className="text-8xl font-black italic font-display">M</span>
@@ -143,7 +139,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* SECCIÓN 5: CTA FINAL */}
       <section className="py-40 text-center px-6">
         <div className="max-w-3xl mx-auto">
           <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter italic mb-10 leading-none">

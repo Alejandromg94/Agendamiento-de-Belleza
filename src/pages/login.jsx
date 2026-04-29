@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../assets/img/logo.jpg";
@@ -27,6 +27,11 @@ const showAlert = ({ title, text, icon, color, navigate, url }) => {
 const Login = () => {
   const navigate = useNavigate();
   const [datos, setDatos] = useState({ correo: "", contrasena: "" });
+
+  useEffect(() => {
+    localStorage.removeItem("user_token");
+    console.log("Sesión previa limpiada");
+  }, []);
 
   const handleInputChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
@@ -59,13 +64,11 @@ const Login = () => {
       },
     ];
 
-    // Si no hay nada, creamos la lista inicial
     if (lista.length === 0) {
       localStorage.setItem(llave, JSON.stringify(usuariosIniciales));
       return usuariosIniciales;
     }
 
-    // Si ya hay usuarios, pero faltan los de prueba, los agregamos
     let listaActualizada = [...lista];
     let huboCambios = false;
 
@@ -95,7 +98,6 @@ const Login = () => {
     if (usuarioEncontrado) {
       localStorage.setItem("user_token", JSON.stringify(usuarioEncontrado));
 
-      // Lógica de redirección por Rol
       let url = "/";
       if (usuarioEncontrado.rol === "Administrador") {
         url = "/admin-panel";
@@ -130,14 +132,13 @@ const Login = () => {
 
       {/* TARJETA LOGIN */}
       <div className="max-w-md w-full bg-[#0A0A0A] backdrop-blur-3xl rounded-[3rem] p-10 border border-white/5 z-10 shadow-2xl">
-        {/* 2. CONTENEDOR DEL LOGO */}
         <div className="flex flex-col items-center mb-12">
           <div className="w-32 h-32 mb-8 p-1.5 bg-gold-gradient rounded-[2.5rem] gold-shadow flex items-center justify-center relative group">
             <div className="absolute inset-0 bg-gold-gradient opacity-20 blur-xl group-hover:opacity-40 transition-opacity"></div>
             <div className="w-full h-full bg-[#0A0A0A] rounded-[2.3rem] flex items-center justify-center overflow-hidden p-4 relative z-10">
               <img
                 src={logo}
-                alt="Logo Beauty-flow"
+                alt="Logo SV Beauty Studio"
                 className="w-full h-full object-contain brightness-110"
               />
             </div>
@@ -190,13 +191,13 @@ const Login = () => {
               Iniciar Sesión
             </button>
 
-            <div className="space-y-4 pt-4">
+            <div className="space-y-4 pt-4 text-center">
               <Link
                 to="/register"
-                className="w-full block text-center text-gray-400 hover:text-white font-bold py-2 transition-all uppercase text-[10px] tracking-widest"
+                className="text-gray-400 hover:text-white font-bold py-2 transition-all uppercase text-[10px] tracking-widest"
               >
                 ¿No tienes cuenta?{" "}
-                <span className="text-accent ml-2">Regístrate</span>
+                <span className="text-accent ml-1">Regístrate</span>
               </Link>
             </div>
           </div>

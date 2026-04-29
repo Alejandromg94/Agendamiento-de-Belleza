@@ -74,7 +74,7 @@ const ProfessionalPanel = () => {
         fecha: "",
         hora: "",
       });
-      cargarCitas(); // Refrescar lista
+      cargarCitas();
     } catch {
       Swal.fire("Error", "No se pudo agendar", "error");
     }
@@ -106,9 +106,7 @@ const ProfessionalPanel = () => {
       </header>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
-        {/* COLUMNA IZQUIERDA: AGENDAR Y STATS */}
         <div className="lg:col-span-4 space-y-8">
-          {/* FORMULARIO DE AGENDAMIENTO RÁPIDO */}
           <section className="bg-[#0A0A0A] p-8 rounded-[3rem] border border-white/5 shadow-2xl">
             <h3 className="text-[10px] font-black uppercase tracking-widest text-gold-gradient mb-8 flex items-center gap-2">
               <span className="w-2 h-2 bg-gold-gradient rounded-full"></span>
@@ -168,8 +166,6 @@ const ProfessionalPanel = () => {
               </button>
             </form>
           </section>
-
-          {/* BALANCE SEMANAL */}
           <div className="bg-gold-gradient p-8 rounded-[3rem] text-black shadow-xl">
             <p className="font-black text-[9px] uppercase mb-4 tracking-widest opacity-60">
               Rendimiento Estimado
@@ -178,7 +174,6 @@ const ProfessionalPanel = () => {
           </div>
         </div>
 
-        {/* COLUMNA DERECHA: LISTA DE CITAS */}
         <div className="lg:col-span-8 bg-[#0A0A0A] rounded-[4rem] border border-white/5 overflow-hidden shadow-2xl">
           <div className="p-10 border-b border-white/5 flex justify-between items-center bg-black/20">
             <h4 className="font-black uppercase text-xs tracking-[0.3em]">

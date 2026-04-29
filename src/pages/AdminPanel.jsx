@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 const AdminPanel = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("usuarios");
-  // Inicializar estado con datos del localStorage
   const [usuarios, setUsuarios] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem("usuarios")) || [];
@@ -96,7 +95,6 @@ const AdminPanel = () => {
 
   return (
     <div className="flex min-h-screen bg-[#050505] font-sans">
-      {/* SIDEBAR FIJO */}
       <aside className="w-80 bg-[#0A0A0A] text-white flex flex-col fixed h-full shadow-2xl z-20 border-r border-white/5">
         <div className="p-12 text-center border-b border-white/5 bg-black/20">
           <h2 className="text-gold-gradient font-black text-3xl uppercase italic tracking-tighter leading-none font-display">

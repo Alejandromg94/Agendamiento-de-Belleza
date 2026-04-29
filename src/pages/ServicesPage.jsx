@@ -35,7 +35,6 @@ const ServicesPage = () => {
   const categorias = ["Todos", "Mirada", "Manos", "Cejas", "Cabello"];
 
   const servicios = [
-    // --- CATEGORÍA: MIRADA ---
     {
       id: 1,
       nombre: "Pestañas Volumen Hawaiano",
@@ -285,7 +284,6 @@ const ServicesPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white p-6 md:p-20 font-sans">
-      {/* HEADER DE LA PANTALLA */}
       <header className="max-w-7xl mx-auto mb-20 flex flex-col md:flex-row justify-between items-center gap-10">
         <div className="text-center md:text-left">
           <span className="text-gold-gradient text-[10px] font-black uppercase tracking-[0.8em] mb-4 block">
@@ -295,8 +293,6 @@ const ServicesPage = () => {
             Nuestros <span className="text-gold-gradient">Servicios</span>
           </h1>
         </div>
-
-        {/* FILTROS TIPO CAPSULA */}
         <div className="flex gap-4 bg-white/5 p-2 rounded-3xl border border-white/10 backdrop-blur-xl">
           {categorias.map((cat) => (
             <button
@@ -314,14 +310,12 @@ const ServicesPage = () => {
         </div>
       </header>
 
-      {/* GRILLA DE SERVICIOS */}
       <main className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {serviciosFiltrados.map((s) => (
           <div
             key={s.id}
             className="group relative bg-[#0A0A0A] rounded-[4rem] overflow-hidden border border-white/5 hover:border-accent/30 transition-all duration-500 shadow-2xl"
           >
-            {/* IMAGEN CON OVERLAY */}
             <div className="h-[450px] overflow-hidden relative">
               <img
                 src={s.img}
@@ -335,8 +329,6 @@ const ServicesPage = () => {
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent"></div>
             </div>
-
-            {/* CONTENIDO */}
             <div className="p-10 -mt-20 relative z-10">
               <div className="flex justify-between items-end mb-6">
                 <div>
@@ -368,8 +360,6 @@ const ServicesPage = () => {
           </div>
         ))}
       </main>
-
-      {/* BOTÓN VOLVER */}
       <footer className="mt-32 text-center pb-20">
         <button
           onClick={() => navigate("/")}

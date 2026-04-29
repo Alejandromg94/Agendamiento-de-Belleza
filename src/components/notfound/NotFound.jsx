@@ -4,7 +4,6 @@ import conoImg from "../../assets/img/cono.png";
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-[#050505] flex items-center justify-center px-6 relative overflow-hidden font-sans">
-      {/* Elementos Decorativos */}
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-[120px]"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-[120px]"></div>
 
@@ -41,7 +40,6 @@ export default function NotFound() {
         </div>
       </div>
 
-      {/* Imagen sutil de fondo o icono si se desea, por ahora mantenemos el minimalismo de lujo */}
       <div className="absolute bottom-10 left-10 opacity-10 grayscale brightness-50 hidden md:block">
         <img src={conoImg} alt="Icono" className="w-20" />
       </div>

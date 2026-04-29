@@ -20,13 +20,10 @@ const Agenda = () => {
     profesional: "",
   });
 
-  // Cargar lista de profesionales desde usuarios
   const profesionales = JSON.parse(localStorage.getItem("usuarios")) || [];
   const soloPros = profesionales.filter(
     (u) => u.rol === "Profesional" && u.activo,
   );
-
-  // Ya no necesitamos useEffect para cargar citas
 
   const saveToStorage = (data) => {
     try {

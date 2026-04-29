@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 const CustomerPortal = () => {
   const navigate = useNavigate();
 
-  // Obtenemos el nombre real del cliente logueado
   const userToken = JSON.parse(localStorage.getItem("user_token")) || {};
   const clienteNombre = userToken.nombre || "Cliente";
 
@@ -37,7 +36,6 @@ const CustomerPortal = () => {
         </header>
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* PRÓXIMAS CITAS */}
           <div className="bg-[#0A0A0A] p-10 rounded-[4rem] border border-white/5 relative overflow-hidden shadow-3xl">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gold-gradient opacity-5 rounded-full blur-3xl"></div>
             <h3 className="text-[10px] font-black uppercase tracking-widest text-accent mb-10">
@@ -70,7 +68,6 @@ const CustomerPortal = () => {
             </div>
           </div>
 
-          {/* ACCIONES RÁPIDAS */}
           <div className="flex flex-col gap-8">
             <div className="bg-white/5 p-10 rounded-[4rem] border border-white/10 hover:border-accent transition-all group">
               <h4 className="text-2xl font-black uppercase italic font-display mb-4 group-hover:text-gold-gradient transition-colors">
